@@ -1,0 +1,54 @@
+<!doctype HTML>
+<!--Created by ALLAN DAUM  -->
+<!--Pay Calculator         -->
+
+<HTML>
+	<head>
+		<title>Pay</title>
+		<script>
+			function calculate ()
+			{
+				var firstName = document.getElementById('firstName').value;
+				var lastName = document.getElementById('lastName').value;
+				var payRate = document.getElementById('payRate').value;
+				var hours = document.getElementById('hours').value;
+				var overTime = 0;
+				var regPay = 0;
+				var totalPay = 0;
+				var otPay = 0;
+				if (hours > 40)
+					{
+						overTime = hours-40;
+						hours = hours - overTime;
+					}
+				 regPay = hours * payRate;
+				 otPay = overTime * (payRate * 1.5);
+				 totalPay = regPay + otPay;
+				 document.getElementById('outputDiv').innerHTML=
+					"<p>Name: " + firstName +" " + lastName + "<br>Hours: " + hours +
+						"<br>Pay: " + regPay + "<br>Overtime hours" + overTime +
+						"<br> Overtime pay: " + otPay + "<br> Total Pay: " + totalPay +
+						"</p>";
+			}
+		</script>
+	</head>
+	<body>
+		<h3>
+			Payroll
+		</h3>
+		<p>
+			Enter <b>FIRST</b> name: <input type="text" id="firstName" size=10 value="">
+			<br>
+			Enter <b>LAST</b> name: <input type="text" id="lastName" size=10 value=""> 
+			<br>
+			Enter <b>PAY RATE</b>: <input type="text" id="payRate" size=10 value="">
+			<br>
+			Enter total amount of hours worked: <input type="text" id="hours" size=10 value="">
+		</p>
+		<input type="button" value="Calculate"
+			onclick="calculate()">
+		<hr>
+		<div id="outputDiv">
+		</div>
+</body>
+</html>
